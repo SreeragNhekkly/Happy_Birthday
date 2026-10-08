@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A little surprise for you</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Caveat:wght@500;700&family=Figtree:wght@400;600&display=swap">
+  <style>
+    :root{--bg:#fff3ea;--ink:#3b1f2b;--soft:#7a5565;--card:#ffffff;--rose:#e8456b;--gold:#f5a623;--cake:#f7c6d0;--cake2:#e8456b;--line:#f0d5d9}
+    @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b0f27;--ink:#fff1e6;--soft:#c9a9bd;--card:#2a1740;--rose:#ff7a99;--gold:#ffc857;--cake:#f3b6c6;--cake2:#ff7a99;--line:#43275e}}
+    :root[data-theme="dark"]{--bg:#1b0f27;--ink:#fff1e6;--soft:#c9a9bd;--card:#2a1740;--rose:#ff7a99;--gold:#ffc857;--cake:#f3b6c6;--cake2:#ff7a99;--line:#43275e}
+    :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+    html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+    *,*::before,*::after{box-sizing:inherit}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 Figtree,system-ui,sans-serif}
+    h1,h2{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.05}
+    .wrap{max-width:640px;margin:0 auto;padding:0 22px}
+    #gate{position:fixed;inset:0;z-index:10;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .8s,visibility .8s}
+    #gate.gone{opacity:0;visibility:hidden}
+    #gate p{font-family:Caveat,cursive;font-size:30px;margin:0 0 6px;color:var(--soft)}
+    #gate h1{font-size:clamp(40px,11vw,72px);font-style:italic;font-weight:500;margin-bottom:34px}
+    .gift{font-size:84px;background:none;border:0;cursor:pointer;animation:wob 2.2s ease-in-out infinite;line-height:1}
+    @keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+    .hint{font-size:15px;color:var(--soft);margin-top:14px}
+    button:focus-visible{outline:3px solid var(--rose);outline-offset:4px;border-radius:12px}
+    header{padding:12vh 0 6vh;text-align:center}
+    header small{font-family:Caveat,cursive;font-size:30px;color:var(--rose)}
+    header h1{font-size:clamp(48px,14vw,96px);font-weight:600;margin-top:6px}
+    header h1 em{font-weight:500}
+    .letter{background:var(--card);border:1px solid var(--line);border-radius:6px 26px 6px 26px;padding:30px 26px;transform:rotate(-.6deg);box-shadow:0 18px 40px -22px var(--rose)}
+    .letter p{font-family:Caveat,cursive;font-size:26px;line-height:1.35;margin:0 0 14px}
+    .letter .sig{text-align:right;color:var(--rose);font-weight:700;margin:6px 0 0}
+    section{padding:9vh 0 0}
+    h2{font-size:clamp(30px,8vw,44px);font-weight:600;margin-bottom:20px}
+    .reasons{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+    .reasons li{padding:14px 18px;border-left:4px solid var(--rose);background:var(--card);border-radius:4px 14px 14px 4px}
+    .photos{display:flex;gap:16px;overflow-x:auto;padding:8px 2px 18px}
+    .photos::-webkit-scrollbar{display:none}
+    .photos figure{margin:0;flex:0 0 190px;background:#fff;padding:10px 10px 14px;border-radius:4px;box-shadow:0 10px 24px -12px #0006;color:#3b1f2b;font-family:Caveat,cursive;font-size:22px;text-align:center}
+    .photos figure:nth-child(odd){transform:rotate(-2.5deg)}.photos figure:nth-child(even){transform:rotate(2deg)}
+    .photos img{width:100%;aspect-ratio:1;object-fit:cover;display:block;margin-bottom:6px}
+    .cakebox{text-align:center}
+    .cakebox p{color:var(--soft);margin:0 0 30px}
+    .candles{display:flex;justify-content:center;gap:clamp(16px,6vw,34px);height:84px;align-items:flex-end}
+    .candle{width:12px;height:46px;border:0;padding:0;background:linear-gradient(#fff,var(--gold));border-radius:3px;position:relative;cursor:pointer}
+    .candle::before{content:"";position:absolute;left:50%;top:-30px;width:16px;height:28px;margin-left:-8px;background:radial-gradient(ellipse at 50% 70%,#fff 0 18%,#ffd45c 40%,#ff8a1f 75%);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;animation:fl .35s ease-in-out infinite alternate;transform-origin:50% 100%;box-shadow:0 0 22px 6px #ffb34766}
+    .candle.out::before{animation:none;background:none;box-shadow:none;content:"~";color:var(--soft);font-size:20px;top:-26px;text-align:center;opacity:.6}
+    @keyframes fl{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.9,1.1) rotate(3deg)}}
+    .tier{margin:0 auto;border-radius:14px 14px 6px 6px;position:relative}
+    .t1{width:56%;height:56px;background:var(--cake)}
+    .t2{width:78%;height:70px;background:var(--cake2);margin-top:-2px}
+    .t3{width:98%;height:76px;background:var(--cake);margin-top:-2px;border-radius:14px 14px 18px 18px}
+    .tier::after{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:radial-gradient(circle at 12px 0,#fff 11px,transparent 12px) 0 0/24px 16px repeat-x;opacity:.9;border-radius:inherit}
+    .plate{width:110%;margin:0 -5%;height:12px;background:var(--line);border-radius:50%}
+    #final{margin-top:34px;opacity:0;transform:translateY(12px);transition:all .9s;pointer-events:none}
+    #final.show{opacity:1;transform:none;pointer-events:auto}
+    #final h2{color:var(--rose);font-style:italic}
+    footer{padding:12vh 0 8vh;text-align:center;color:var(--soft);font-family:Caveat,cursive;font-size:24px}
+    #fx{position:fixed;inset:0;pointer-events:none;z-index:20;width:100%;height:100%}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<div id="gate">
+  <p>psst… this is only for</p>
+  <h1 id="gname">you</h1>
+  <button class="gift" id="open" aria-label="Open your surprise">🎁</button>
+  <div class="hint">Tap the gift</div>
+</div>
+
+<main class="wrap">
+  <header>
+    <small>today is all about</small>
+    <h1>Happy birthday, <em id="hname">love</em></h1>
+  </header>
+
+  <div class="letter" id="letter"></div>
+
+  <section id="photosec" hidden>
+    <h2>Little moments</h2>
+    <div class="photos" id="photos"></div>
+  </section>
+
+  <section>
+    <h2>Why you're my favourite person</h2>
+    <ul class="reasons" id="reasons"></ul>
+  </section>
+
+  <section class="cakebox">
+    <h2>Make a wish</h2>
+    <p>Tap every flame to blow out the candles.</p>
+    <div class="candles" id="candles"></div>
+    <div class="tier t1"></div><div class="tier t2"></div><div class="tier t3"></div>
+    <div class="plate"></div>
+    <div id="final">
+      <h2 id="finalTitle">Your wish is on its way</h2>
+      <p id="finalText" style="color:var(--ink);margin-top:14px"></p>
+    </div>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+
+<script>
+/* placeholder picture: swap for a real photo URL later */
+const ph = (emoji, a, b) => "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + a + '"/><stop offset="1" stop-color="' + b + '"/></linearGradient></defs><rect width="300" height="300" fill="url(#g)"/><text x="150" y="150" font-size="96" text-anchor="middle" dominant-baseline="central">' + emoji + '</text><text x="150" y="255" font-size="20" text-anchor="middle" fill="#fff" font-family="sans-serif">your photo here</text></svg>');
+
+/* ====== EDIT THIS SECTION ====== */
+const CONFIG = {
+  name: "Aiswarya",              // her name (or add ?name=Anu to the link)
+  from: "Sreerag",            // your name
+  candles: 5,                 // number of candles on the cake (1–8)
+  letter: [
+    "Hey you,",
+    "I wanted to do something different this year, so I built you this little corner of the internet.",
+    "Thank you for every laugh, every late-night talk, and for making ordinary days feel special. I'm so lucky to be yours."
+  ],
+  reasons: [
+    "You make me laugh when I least expect it",
+    "You believe in me even on my worst days",
+    "Your smile fixes things I can't explain",
+    "Being with you feels like home"
+  ],
+  photos: [
+    { src: "assets/closeup.png", caption: "You’re my world" },
+    { src: "assets/Snapchat-751120259.jpg", caption: "Forever" },
+    { src: "assets/photo_2025-09-05_23-36-34.jpg", caption: "Just you, always" },
+    { src: "assets/Snapchat-2001139853.jpg", caption: "You & me" }
+  ],
+  finalTitle: "My wishes for you",
+  finalText: "I wish you a year full of laughter, good health and big dreams coming true. May every day bring you peace, joy and everything your heart wants. Happy birthday, my love. 💖",
+  footer: "Made with love, just for you"
+};
+/* ================================ */
+
+const $ = id => document.getElementById(id);
+const q = new URLSearchParams(location.search).get("name");
+const name = (q || CONFIG.name || "love").trim();
+$("gname").textContent = name; $("hname").textContent = name;
+document.title = "Happy birthday, " + name;
+$("letter").innerHTML = CONFIG.letter.map(t => "<p>" + t + "</p>").join("") + '<p class="sig">Always yours, ' + CONFIG.from + "</p>";
+$("reasons").innerHTML = CONFIG.reasons.map(t => "<li>" + t + "</li>").join("");
+$("finalTitle").textContent = CONFIG.finalTitle; $("finalText").textContent = CONFIG.finalText;
+$("foot").textContent = CONFIG.footer;
+if (CONFIG.photos.length) {
+  $("photosec").hidden = false;
+  $("photos").innerHTML = CONFIG.photos.map(p => '<figure><img src="' + p.src + '" alt="' + (p.caption || "") + '"><figcaption>' + (p.caption || "") + "</figcaption></figure>").join("");
+}
+
+/* confetti */
+const cv = $("fx"), cx = cv.getContext("2d"); let parts = [], raf = 0;
+function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+size(); addEventListener("resize", size);
+function burst(n, x, y){
+  const cols = ["#ff7a99","#ffc857","#ffffff","#8ee3c8","#b69cff"];
+  for (let i = 0; i < n; i++) parts.push({x:(x ?? .5)*cv.width, y:(y ?? .35)*cv.height, vx:(Math.random()-.5)*16*devicePixelRatio, vy:(Math.random()*-14-4)*devicePixelRatio, s:(4+Math.random()*6)*devicePixelRatio, r:Math.random()*6, vr:(Math.random()-.5)*.4, c:cols[i%cols.length]});
+  if (!raf) loop();
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts = parts.filter(p => p.y < cv.height + 20);
+  for (const p of parts){ p.vy += .35*devicePixelRatio; p.x += p.vx; p.y += p.vy; p.r += p.vr; cx.save(); cx.translate(p.x,p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); cx.restore(); }
+  raf = parts.length ? requestAnimationFrame(loop) : 0;
+}
+
+/* gate */
+$("open").onclick = () => { $("gate").classList.add("gone"); burst(160, .5, .4); };
+
+/* candles */
+const n = Math.min(8, Math.max(1, CONFIG.candles)); let lit = n;
+$("candles").innerHTML = Array.from({length:n}, (_, i) => '<button class="candle" aria-label="Blow out candle ' + (i+1) + '"></button>').join("");
+document.querySelectorAll(".candle").forEach(c => c.onclick = () => {
+  if (c.classList.contains("out")) return;
+  c.classList.add("out"); lit--;
+  if (!lit){ $("final").classList.add("show"); burst(220, .5, .6); setTimeout(() => burst(120, .2, .5), 400); setTimeout(() => burst(120, .8, .5), 700); $("final").scrollIntoView({behavior:"smooth", block:"center"}); }
+});
+</script>
+</body>
+</html>
